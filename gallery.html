@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VVN Primary and Nursery School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Quicksand:wght@500&display=swap"
+        rel="stylesheet">
+<style>
+    /* CSS Variables */
+    :root {
+        --primary-blue: #6EC1E4;
+        --primary-green: #7CC6A4;
+        --accent-yellow: #FFD166;
+        --accent-pink: #FF87AB;
+        --text-dark: #333333;
+        --text-light: #FFFFFF;
+        --bg-light: #FAFAFA;
+    }
+
+    #mainLoginBtn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    /* Base Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Nunito', sans-serif;
+        color: var(--text-dark);
+        background-color: var(--bg-light);
+        line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3 {
+        font-family: 'Quicksand', sans-serif;
+        margin-bottom: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: var(--primary-blue);
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Header Styles */
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: var(--text-light);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        height: 60px;
+        margin-right: 1rem;
+    }
+
+    .school-name h1 {
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+    }
+
+    .school-name p {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+    }
+
+    .main-nav ul {
+        display: flex;
+        list-style: none;
+    }
+
+    .main-nav li {
+        margin-left: 1.5rem;
+    }
+
+    .main-nav a {
+        color: var(--text-dark);
+        font-weight: 600;
+        transition: color 0.3s;
+    }
+
+    .main-nav a:hover {
+        color: var(--primary-blue);
+    }
+
+    carousel-container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 3rem;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-slide {
+        display: flex;
+        width: 100%;
+        height: 400px;
+        position: relative;
+    }
+
+    .carousel-slide img {
+        min-width: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    #prevBtn,
+    #nextBtn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--primary-blue);
+        border: none;
+        padding: 10px 15px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    #prevBtn:hover,
+    #nextBtn:hover {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    #prevBtn {
+        left: 20px;
+    }
+
+    #nextBtn {
+        right: 20px;
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        z-index: 10;
+    }
+
+    .dot {
+        width: 12px;
+        height: 12px;
+        margin: 0 5px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .dot.active {
+        background: var(--accent-yellow);
+    }
+
+    @media (max-width: 768px) {
+        .carousel-slide {
+            height: 300px;
+        }
+
+        #prevBtn,
+        #nextBtn {
+            padding: 8px 12px;
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+        background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+        color: var(--text-light);
+        padding: 3rem 2rem;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+    }
+
+    .banner-content {
+        flex: 1;
+        z-index: 2;
+    }
+
+    .banner-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .banner-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .banner-character {
+        flex: 1;
+        text-align: center;
+        z-index: 1;
+    }
+
+    /* Buttons */
+    .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+        background-color: var(--accent-yellow);
+        color: var(--text-dark);
+    }
+
+    .btn-primary:hover {
+        background-color: #ffc233;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background-color: transparent;
+        color: var(--text-light);
+        border: 2px solid var(--text-light);
+    }
+
+    .btn-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    /* Sections */
+    .section {
+        padding: 4rem 2rem;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        color: var(--primary-blue);
+    }
+
+    /* About Section */
+    .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .about-card {
+        background: var(--text-light);
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+    }
+
+    .about-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .gallery-item {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.03);
+    }
+
+    /* Team Section */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .team-card {
+        background: var(--text-light);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+
+    .team-img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .team-info {
+        padding: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--primary-blue);
+        color: var(--text-light);
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+        color: var(--text-light);
+        margin: 0 1rem;
+    }
+
+    .social-icons {
+        margin: 1rem 0;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin: 0 0.5rem;
+        color: var(--text-light);
+        font-size: 1.5rem;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-15px);
+        }
+
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .float-animation {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .main-header {
+            flex-direction: column;
+            padding: 1rem;
+        }
+
+        .main-nav ul {
+            margin-top: 1rem;
+        }
+
+        .main-nav li {
+            margin: 0 0.5rem;
+        }
+
+        .hero-banner {
+            flex-direction: column;
+            text-align: center;
+            min-height: auto;
+        }
+
+        .banner-character {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+        .mobile-menu-toggle {
+            display: block;
+        }
+
+        .main-nav ul {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+        }
+
+        .main-nav ul.active {
+            display: flex;
+        }
+
+        .main-nav li {
+            margin: 0.5rem 0;
+        }
+    }
+</style>
+<body>
+    <section class="section" id="life">
+        <h2 class="section-title">School Life Images</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="open.jpg" alt="Classroom">
+            </div>
+            <div class="gallery-item">
+                <img src="slogan.jpg" alt="Playground">
+            </div>
+            <div class="gallery-item">
+                <img src="clAss.jpg" alt="Library">
+            </div>
+            <div class="gallery-item">
+                <img src="classroom2.jpg" alt="Sports Day">
+            </div>
+            <div class="gallery-item">
+                <img src="childrens.jpg" alt="Art Class">
+            </div>
+            <div class="gallery-item">
+                <img src="activity3.jpg" alt="Science Fair">
+            </div>
+            <div class="gallery-item">
+                <img src="library.jpg" alt="Classroom">
+            </div>
+            <div class="gallery-item">
+                <img src="writing.png" alt="Classroom">
+            </div>
+            <div class="gallery-item">
+                <img src="writing1.png" alt="Classroom">
+            </div>
+            <div class="gallery-item">
+                <img src="paraid.jpg" alt="events">
+                </div>
+                <div class="gallery-item">
+                    <img src="gate.JPG" alt="events">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="board.JPG" alt="events">  
+                    </div>
+                    <div class="gallery-item">
+                        <img src="board1.JPG" alt="events"> 
+                     </div>
+                    <div class="gallery-item">
+                        <img src="office.JPG" alt="events">  </div>
+                        <div class="gallery-item">
+                            <img src="class1.JPG" alt="events">      </div>
+        </div>
+        </section> 
+        <section class="section" id="Van Facilities">
+            <h2 class="section-title">Facilities</h2>
+            <p></p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="van1.JPG" alt="events">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="van2.JPG" alt="events">  </div>
+                        <div class="gallery-item">
+                            <img src="van3.JPG" alt="events">      </div>
+                            <div class="gallery-item">
+                                <img src="van4.JPG" alt="events">          </div>
+                                <div class="gallery-item">
+                                    <img src="van5.JPG" alt="events">              </div>
+                </div>
+                </section>
+
+
+
+<section class="section" id="Events">
+    <h2 class="section-title">Events Picture</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="independence.jpg" alt="Events">
+        </div>
+        <div class="gallery-item">
+            <img src="independence2.jpg" alt="Events">
+        </div>
+        <div class="gallery-item">
+            <img src="pongal.jpg" alt="Events">
+        </div>
+        <div class="gallery-item">
+            <img src="pongal1.jpg" alt="Events">
+        </div>
+        <div class="gallery-item">
+            <img src="annual day.jpg" alt="Events"
+                onclick="window.open('https://youtu.be/EH1TuNYLZBI?si=cNDb07aQfXr0tZHr','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="annual.jpg" alt="Events"
+                onclick="window.open('https://youtu.be/EH1TuNYLZBI?si=cNDb07aQfXr0tZHr','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="annual2.png" alt="Events"
+                onclick="window.open('https://youtu.be/w5vRKlou7R0?si=bjGTUs8mZIaixXDs','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="annual 3.png" alt="Events"
+                onclick="window.open('https://youtu.be/QuOtb_R36lU?si=mp0w3DlZe_Sigv2j','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="annual4.png" alt="Events"
+                onclick="window.open('https://youtu.be/i4ueMCk5ggY?si=KVkJCCPIXO1zu93J','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="annual5.png" alt="Events"
+                onclick="window.open('https://youtu.be/LQ7AOj5sk9M?si=SVHUMo8QRSRA2f63','_blank')">
+        </div>
+</section>
+<section class="section" id="Education Tour">
+    <h2 class="section-title">Education Tour Images</h2>
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="tour1.jpg" alt="tour">
+        </div>
+        <div class="gallery-item">
+            <img src="tour2.jpg" alt="tour">
+        </div>
+        <div class="gallery-item">
+            <img src="tour3.jpg" alt="tour">
+        </div>
+        <div class="gallery-item">
+            <img src="tour4.jpg" alt="tour">
+        </div>
+        <div class="gallery-item">
+            <img src="tour6.jpg" alt="tour">
+        </div>
+        
+</section>
+<section>
+    <section class="section" id="Extracurricular Activities">
+        <h2 class="section-title">Extracurricular Activities Videos</h2>
+        <p></p>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="silambam.png" alt="Events"
+                    onclick="window.open('https://youtu.be/SMMIdKOw1CI?si=R8Gr2-BFO3s4pn8Q','_blank')">
+            </div>
+            <div class="gallery-item">
+                <img src="phonics.png" alt="Events"
+                    onclick="window.open('https://youtu.be/13KTiJV0aXQ?si=2K8bNbnTVGy_eqpE','_blank')">
+            </div>
+            <div class="gallery-item">
+                <img src="hindi.png"alt="events"
+                onclick="window.open('https://youtu.be/_zKvthBwopw?si=-n9cu9ZvnoEo9C60','_blank')">
+            </div>
+            <div class="gallery-item">
+                <img src="puzzle.png" alt="events"
+                    onclick="window.open('https://youtu.be/iUz1FAaa6Pk?si=BQObcWBsK4PpWVsE','_blank')">
+            </div>
+            <div class="gallery-item">
+                <img src="days.png" alt="events"
+                    onclick="window.open('https://youtu.be/kwH7hHp5qQQ?si=tH0R2Wld_Mumf40I','_blank')">
+            </div>
+    </section>
+    <section class="section" id="Extracurricular Activities">
+        <h2 class="section-title">Sports Day Videos</h2>
+        <p>a physical activity or game, often competitive and organized, that maintains or improves physical ability and skills.</p>
+        <div class="gallery">
+            <video width="800" controls style="max-width: 100%; height: auto;">
+                <source src="paraid1.mp4" type="video/mp4">
+                Your browser doesn't support HTML5 video.
+            </video>
+        <div class="gallery-item">
+            <img src="sports.png" alt="events" 
+                 onclick="window.open('https://youtu.be/-qh6Bi6hrcU?si=I6Ge1AGa_XxXD4N-','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="sports2.png" alt="events"
+                onclick="window.open('https://youtu.be/dVPJfIz8BJQ?si=1TO8-S86RxSaTIhW','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="sports3.png" alt="events"
+                onclick="window.open('https://youtu.be/xOTffh1af1k?si=M0NVmiryOi6Nw_tI','_blank')">
+        </div>
+        <div class="gallery-item">
+            <img src="sports4.png" alt="events"
+                onclick="window.open('https://youtu.be/-bAW-8me_FA?si=5xzakpAyg1vpcJ3h','_blank')">
+        </div>
+        </div>
+    </section>
+             <section class="section" id="Youtube Videos">
+                <h2 class="section-title">Youtube Videos</h2>
+                <p></p>
+                <div class="gallery">
+                    <div class="gallery-item">
+                            <img src="annual.jpg" alt="events"
+                                onclick="window.open('https://youtu.be/EH1TuNYLZBI?si=-4PCewWa1N0I6bEj','_blank')">     
+                     </div>
+                    <div class="gallery-item">
+                            <img src="annual6.png"alt="events" 
+                                onclick="window.open('https://youtu.be/Ok9zQjnDnjU?si=EiM7q2_mIev2RoP8','_blank')">
+                    </div>
+                    <div class="gallery-item">
+                                    <img src="annual5.png" alt="events"
+                                    onclick="window.open('https://youtu.be/LQ7AOj5sk9M?si=-S-wloRVLoJfum_W','_blank')">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="annual2.png" alt="events"
+                                    onclick="window.open('https://youtu.be/w5vRKlou7R0?si=YLY5eOIzuwTzOO6f','_blank')">
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="annual 3.png" alt="events"
+                                    onclick="window.open('https://youtu.be/w5vRKlou7R0?si=YLY5eOIzuwTzOO6f','_blank')">
+                                </div>
+                </div>
+                </section>
+                <footer>
+                    <div class="social-icons">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="https://youtube.com/@vetrivivekananda?si=kDus06r52u0UAHaN" target="_blank"> YouTube</a>
+                    </div>
+                    <p>VETRI VIVEKANANDA Nursery and Primary School</p>
+                    <p>Main Road ,T.Mariyur,Ramnad Dist-623703</p>
+                    <p>Phone:+91 76392 94275,+91 94871 09298 | Email: vvnschool@gmail.com</p>
+                    <p>© 2023 VETRI VIVEKANANDA. All rights reserved.</p>     
+                  </footer>
+    </body>
+</html>

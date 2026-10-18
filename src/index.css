@@ -1,0 +1,394 @@
+/* =========================================================
+   VETRI VIVEKANANDA NURSERY & PRIMARY SCHOOL - KIDS DESIGN SYSTEM
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  /* Vibrant & Harmonious Kids Color Palette */
+  --color-primary: #FF5964;       /* Playful Berry / Coral */
+  --color-primary-light: #FFE3E5;
+  --color-sunshine: #FFB703;      /* Warm Sunshine Yellow */
+  --color-sunshine-light: #FEF3C7;
+  --color-sky: #38BDF8;           /* Joyful Sky Blue */
+  --color-sky-light: #E0F2FE;
+  --color-mint: #10B981;          /* Fresh Mint Green */
+  --color-mint-light: #D1FAE5;
+  --color-purple: #8B5CF6;        /* Magic Lavender */
+  --color-purple-light: #EDE9FE;
+  --color-coral: #FB8500;         /* Energetic Orange */
+
+  --text-main: #1E293B;           /* Slate 800 */
+  --text-muted: #64748B;          /* Slate 500 */
+  --text-light: #FFFFFF;
+
+  --bg-gradient-hero: linear-gradient(135deg, #FFF1F2 0%, #FEF9C3 50%, #E0F2FE 100%);
+  --bg-soft: #F8FAFC;
+  --bg-card: #FFFFFF;
+
+  --radius-xs: 8px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
+  --shadow-colored: 0 12px 28px -6px rgba(255, 89, 100, 0.25);
+  --shadow-sky: 0 12px 28px -6px rgba(56, 189, 248, 0.3);
+
+  --font-heading: 'Fredoka', 'Quicksand', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+
+  --transition-bounce: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-smooth: all 0.25s ease-in-out;
+}
+
+/* Base Reset & Global Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-soft);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition-bounce);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF5F5;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sunshine);
+  border-radius: var(--radius-full);
+  border: 2px solid #FFF5F5;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Section Containers & Badges */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-wrapper {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.kid-pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kid-pill-tag.pink {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.kid-pill-tag.sky {
+  background-color: var(--color-sky-light);
+  color: #0284C7;
+}
+
+.kid-pill-tag.yellow {
+  background-color: var(--color-sunshine-light);
+  color: #B45309;
+}
+
+.kid-pill-tag.mint {
+  background-color: var(--color-mint-light);
+  color: #047857;
+}
+
+.kid-pill-tag.purple {
+  background-color: var(--color-purple-light);
+  color: var(--color-purple);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.section-title span {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-coral) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+
+/* Playful Buttons */
+.kid-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 2rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: var(--transition-bounce);
+  box-shadow: var(--shadow-md);
+  user-select: none;
+}
+
+.kid-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+}
+
+.kid-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.kid-btn-primary {
+  background: linear-gradient(135deg, #FF5964 0%, #FF85A1 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 22px rgba(255, 89, 100, 0.35);
+}
+.kid-btn-primary:hover {
+  box-shadow: 0 14px 28px rgba(255, 89, 100, 0.45);
+}
+
+.kid-btn-yellow {
+  background: linear-gradient(135deg, #FFB703 0%, #FBBF24 100%);
+  color: #78350F;
+  box-shadow: 0 10px 22px rgba(251, 191, 36, 0.4);
+}
+.kid-btn-yellow:hover {
+  box-shadow: 0 14px 28px rgba(251, 191, 36, 0.55);
+}
+
+.kid-btn-sky {
+  background: linear-gradient(135deg, #38BDF8 0%, #0284C7 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 22px rgba(56, 189, 248, 0.35);
+}
+.kid-btn-sky:hover {
+  box-shadow: 0 14px 28px rgba(56, 189, 248, 0.45);
+}
+
+.kid-btn-mint {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: #FFFFFF;
+  box-shadow: 0 10px 22px rgba(16, 185, 129, 0.35);
+}
+
+.kid-btn-outline {
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--text-main);
+  border: 2px dashed #CBD5E1;
+  backdrop-filter: blur(8px);
+}
+.kid-btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: #FFFFFF;
+}
+
+/* Playful Animations */
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes cloudDrift {
+  0% {
+    transform: translateX(-5%);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(-5%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 89, 100, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(255, 89, 100, 0);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+}
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.animate-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 2.5s ease-in-out infinite;
+}
+
+/* Wavy Section Dividers */
+.wave-divider {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  display: block;
+}
+
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* Playful Cards */
+.kid-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-bounce);
+  position: relative;
+  overflow: hidden;
+}
+
+.kid-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.kid-card.border-pink:hover {
+  border-color: var(--color-primary-light);
+}
+
+.kid-card.border-sky:hover {
+  border-color: var(--color-sky-light);
+}
+
+.kid-card.border-yellow:hover {
+  border-color: var(--color-sunshine-light);
+}
+
+.kid-card.border-mint:hover {
+  border-color: var(--color-mint-light);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 3.5rem 0;
+  }
+  .section-title {
+    font-size: 1.85rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .kid-card {
+    padding: 1.5rem;
+  }
+  .kid-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
